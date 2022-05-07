@@ -24,7 +24,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "fix": "run-s fix:*",
+    "fix:code": "yarn lint:code --fix",
+    "fix:other": "yarn prettier --write .",
+    "lint": "run-p --continue-on-error lint:*",
+    "lint:code": "eslint --ignore-path .gitignore --ignore-path .prettierignore --ignore-path .eslintignore --ext .ts,.tsx .",
+    "lint:other": "yarn prettier --check .",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -45,8 +52,27 @@
     ]
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
     "autoprefixer": "^10.4.7",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^26.1.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^12.4.1",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.13",
-    "tailwindcss": "^3.0.24"
+    "prettier": "^2.5.1",
+    "prettier-eslint": "^13.0.0",
+    "tailwindcss": "^3.0.24",
+    "typescript": "^4.4.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "yarn fix:code"
+    ],
+    "*.{md,css,scss,yaml,yml}": [
+      "yarn fix:other"
+    ]
   }
 }

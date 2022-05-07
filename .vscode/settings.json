@@ -1,0 +1,9 @@
+{
+  "editor.formatOnSave": true,
+  "prettier.endOfLine": "lf",
+  "eslint.format.enable": true,
+  "eslint.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
+}
