@@ -1,7 +1,17 @@
+import React from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
 
 const Welcome = () => {
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      navigate("/home");
+    }, 2000);
+  });
+
   return (
     <motion.div className='flex w-screen h-screen items-center justify-center'>
       <div className='bg-white flex flex-col items-center justify-center p-10 rounded-md text-dark max-w-3xl w-[48rem]'>

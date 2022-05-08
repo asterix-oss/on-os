@@ -12,6 +12,7 @@
     "@types/react-dom": "^18.0.0",
     "formik": "^2.2.9",
     "framer-motion": "^6.3.3",
+    "moment": "^2.29.3",
     "phosphor-react": "^1.4.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",

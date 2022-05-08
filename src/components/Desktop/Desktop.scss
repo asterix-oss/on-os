@@ -1,0 +1,19 @@
+.on-desktop {
+  @apply w-screen h-screen fixed top-0 left-0 z-10 flex flex-col items-center pt-10 pb-20;
+}
+
+.on-desktop-apps {
+  @apply flex-1 grid grid-cols-7 grid-rows-4 px-2 pr-4 w-[95vw] py-10;
+}
+
+.on-desktop-app {
+  @apply cursor-pointer flex flex-col items-center text-white text-sm space-y-2;
+
+  .on-desktop-app-icon {
+    @apply aspect-square rounded-md overflow-hidden transform hover:scale-110 transition duration-150;
+
+    img {
+      @apply w-full;
+    }
+  }
+}

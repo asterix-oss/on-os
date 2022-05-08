@@ -1,0 +1,41 @@
+.on-taskbar {
+  @apply fixed bottom-0 w-[95vw] right-1/2 translate-x-1/2 mb-4 text-white flex space-x-2 z-50;
+}
+
+.on-taskbar-widget {
+  @apply text-white p-2 flex space-x-2;
+  background: rgba(9, 9, 9, 0.275);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.089);
+}
+
+.on-taskbar-main {
+  @apply flex-1;
+}
+
+.on-taskbar-tools {
+  @apply flex flex-row space-x-3 px-2 pr-4 border-r border-white/20 w-max;
+}
+
+.on-taskbar-tool {
+  @apply rounded-md w-[50px] h-[50px] bg-white/5 flex items-center justify-center overflow-hidden transform hover:scale-110 transition duration-150 cursor-pointer;
+}
+
+.on-taskbar-apps {
+  @apply flex flex-1 flex-row space-x-3 px-2 pr-4 border-r border-white/20 w-max;
+}
+
+.on-taskbar-app {
+  @apply rounded-md overflow-hidden transform hover:scale-110 transition duration-150 cursor-pointer;
+
+  .on-taskbar-app-icon {
+    @apply w-full h-full;
+
+    img {
+      @apply w-full h-full;
+    }
+  }
+}
