@@ -1,11 +1,17 @@
-import { Route, Routes } from "react-router-dom";
-import { Button } from "./components/Button";
+import { AnimatePresence } from "framer-motion";
+import { Route, Routes, useLocation } from "react-router-dom";
+import Loading from "./screens/Loading";
+import Welcome from "./screens/Welcome";
 
 function App() {
+  const location = useLocation();
   return (
-    <Routes>
-      <Route path='/' element={<Button>Home</Button>} />
-    </Routes>
+    <AnimatePresence exitBeforeEnter>
+      <Routes location={location}>
+        <Route path='/' element={<Loading />} />
+        <Route path='/welcome' element={<Welcome />} />
+      </Routes>
+    </AnimatePresence>
   );
 }
 
