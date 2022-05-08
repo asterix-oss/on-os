@@ -5,9 +5,11 @@ module.exports = {
     es6: true,
   },
   extends: [
+    "plugin:storybook/recommended",
+    "react-app",
+    "react-app/jest",
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    // Prettier
     "plugin:prettier/recommended",
     "prettier",
   ],
@@ -25,6 +27,12 @@ module.exports = {
       files: ["*.js"],
       rules: {
         "@typescript-eslint/explicit-module-boundary-types": "off",
+      },
+    },
+    {
+      files: ["**/*.stories.*"],
+      rules: {
+        "import/no-anonymous-default-export": "off",
       },
     },
   ],
