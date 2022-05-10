@@ -1,4 +1,5 @@
 import React, { createContext } from "react";
+import NavigationContext from "./NavigationContext";
 
 interface AppProps {
   wallpaper: string;
@@ -28,7 +29,11 @@ const AppContext: React.FC<AppContextProps> = ({ children }) => {
     wallpaper,
     changeWallpaper,
   };
-  return <App.Provider value={value}>{children}</App.Provider>;
+  return (
+    <App.Provider value={value}>
+      <NavigationContext>{children}</NavigationContext>
+    </App.Provider>
+  );
 };
 
 export default AppContext;
