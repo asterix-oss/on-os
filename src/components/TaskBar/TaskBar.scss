@@ -3,7 +3,7 @@
 }
 
 .on-taskbar-showing-desktop {
-  @apply translate-y-[150%];
+  @apply translate-y-[150%] box-border;
 }
 
 .on-taskbar-widget {

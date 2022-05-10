@@ -1,4 +1,5 @@
 import moment from "moment";
+import "./TaskBar.scss";
 import {
   Bell,
   CloudSun,
@@ -8,7 +9,6 @@ import {
 } from "phosphor-react";
 import React, { useContext } from "react";
 import { Navigation } from "../../context/NavigationContext";
-import "./TaskBar.scss";
 import { motion, MotionProps } from "framer-motion";
 
 export interface TaskBarProps extends MotionProps {
