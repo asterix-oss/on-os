@@ -21,11 +21,11 @@
 }
 
 .on-taskbar-tools {
-  @apply flex flex-row space-x-3 px-2 pr-4 border-r border-white/20 w-max;
+  @apply flex flex-row space-x-3 pr-4 border-r border-white/20 w-max;
 }
 
 .on-taskbar-tool {
-  @apply rounded-lg w-10 h-10 bg-white/5 flex items-center justify-center overflow-hidden transform hover:scale-110 transition duration-150 cursor-pointer;
+  @apply rounded-md w-10 h-10 bg-white/5 flex items-center justify-center overflow-hidden transform hover:scale-110 transition duration-150 cursor-pointer;
 }
 
 .on-taskbar-apps {
