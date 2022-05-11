@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { ContextMenu } from "../components/ContextMenu";
 import { Desktop } from "../components/Desktop";
 import { Layout } from "../components/Layout";
 import { TaskBar } from "../components/TaskBar";
@@ -8,6 +9,7 @@ const Main = () => {
   const { isShowingDesktop } = useContext(Navigation);
   return (
     <Layout>
+      <ContextMenu />
       <Desktop
         initial={{
           display: "flex",

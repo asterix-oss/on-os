@@ -1,0 +1,13 @@
+@import "../../styles/components";
+
+.on-context-menu {
+  @include menu;
+}
+
+.on-context-menu-divider {
+  @include menu_divider;
+}
+
+.on-context-menu-item {
+  @include menu_item;
+}

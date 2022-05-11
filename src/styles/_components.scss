@@ -1,0 +1,21 @@
+@mixin menu {
+  @include blur(0.77);
+  @apply fixed text-white p-2 flex space-y-2 flex-col min-w-[10rem] text-sm;
+}
+
+@mixin menu_item {
+  @apply flex p-2 hover:bg-red-500/80 rounded-md transition cursor-pointer;
+}
+
+@mixin menu_divider {
+  opacity: 0.1;
+}
+
+@mixin blur($opacity) {
+  background: rgba(9, 9, 9, $opacity);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.77);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.089);
+}
