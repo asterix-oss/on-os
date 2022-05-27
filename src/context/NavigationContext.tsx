@@ -3,12 +3,16 @@ import React, { createContext } from "react";
 interface NavigationProps {
   isShowingDesktop: boolean;
   toggleDesktop: () => void;
+  isShowingTaskBar: boolean;
+  toggleTaskBar: (value?: boolean) => void;
   closeDesktop: () => void;
 }
 
 export const Navigation = createContext<NavigationProps>({
   isShowingDesktop: false,
   toggleDesktop: () => {},
+  isShowingTaskBar: false,
+  toggleTaskBar: (value?: boolean) => {},
   closeDesktop: () => {},
 });
 
@@ -19,8 +23,19 @@ interface NavigationContextProps {
 const NavigationContext: React.FC<NavigationContextProps> = ({ children }) => {
   const [isShowingDesktop, setIsShowingDesktop] = React.useState(false);
 
+  const [isShowingTaskBar, setIsShowingTaskBar] = React.useState(false);
+
+  const toggleTaskBar = (value?: boolean) => {
+    setIsShowingTaskBar(value || !isShowingTaskBar);
+  };
+
   const toggleDesktop = () => {
     setIsShowingDesktop(!isShowingDesktop);
+    // if (isShowingDesktop) {
+    //   setIsShowingTaskBar(false);
+    // } else {
+    //   setIsShowingTaskBar(true);
+    // }
   };
 
   const closeDesktop = () => {
@@ -30,6 +45,8 @@ const NavigationContext: React.FC<NavigationContextProps> = ({ children }) => {
   const value = {
     isShowingDesktop,
     toggleDesktop,
+    isShowingTaskBar,
+    toggleTaskBar,
     closeDesktop,
   };
   return <Navigation.Provider value={value}>{children}</Navigation.Provider>;

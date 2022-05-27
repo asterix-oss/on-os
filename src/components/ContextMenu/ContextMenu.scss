@@ -2,6 +2,7 @@
 
 .on-context-menu {
   @include menu;
+  @apply fixed;
 }
 
 .on-context-menu-divider {

@@ -1,0 +1,26 @@
+@import "../../styles/components";
+
+.on-app {
+  @include blur(0.95);
+  @apply min-w-[50vw] text-white min-h-[60vh] fixed right-1/2 translate-x-1/2 bottom-1/2 translate-y-1/2;
+}
+
+.on-app-menu {
+  @apply flex flex-row items-center space-x-2 justify-between p-1 border-b border-white/10;
+}
+
+.on-app-menu-group {
+  @apply flex flex-row items-center space-x-2 justify-between;
+}
+
+.on-app-menu-item {
+  @apply flex items-center p-1 cursor-pointer hover:opacity-70 transition;
+}
+
+.on-app-menu-section {
+  @apply flex items-center space-x-3 px-2 rounded-sm py-1 bg-white bg-opacity-[0.03];
+}
+
+.on-app-name {
+  @apply flex items-center text-sm px-4 rounded-sm py-1 bg-white bg-opacity-[0.03];
+}

@@ -6,6 +6,7 @@ import {
   Copy,
   MagnifyingGlass,
   SquaresFour,
+  X,
 } from "phosphor-react";
 import React, { useContext } from "react";
 import { Navigation } from "../../context/NavigationContext";
@@ -15,8 +16,61 @@ export interface TaskBarProps extends MotionProps {
   children?: React.ReactNode;
 }
 
+const notifications = [
+  {
+    title: "Notification 1",
+    body: "This is a notification",
+    dateNotified: new Date(),
+  },
+  {
+    title: "Notification 2",
+    body: "This is a notification",
+    dateNotified: new Date(),
+  },
+  {
+    title: "Notification 2",
+    body: "This is a notification",
+    dateNotified: new Date(),
+  },
+  {
+    title: "Notification 2",
+    body: "This is a notification",
+    dateNotified: new Date(),
+  },
+  {
+    title: "Notification 2",
+    body: "This is a notification",
+    dateNotified: new Date(),
+  },
+  {
+    title: "Notification 2",
+    body: "This is a notification",
+    dateNotified: new Date(),
+  },
+  {
+    title: "Notification 2",
+    body: "This is a notification",
+    dateNotified: new Date(),
+  },
+  {
+    title: "Notification 2",
+    body: "This is a notification",
+    dateNotified: new Date(),
+  },
+  {
+    title: "Notification 2",
+    body: "This is a notification",
+    dateNotified: new Date(),
+  },
+  {
+    title: "Notification 2",
+    body: "This is a notification",
+    dateNotified: new Date(),
+  },
+];
+
 export const TaskBar: React.FC<TaskBarProps> = (props) => {
-  const { toggleDesktop, closeDesktop, isShowingDesktop } =
+  const { toggleDesktop, closeDesktop, isShowingTaskBar } =
     useContext(Navigation);
   const [date, setDate] = React.useState(moment());
 
@@ -30,15 +84,15 @@ export const TaskBar: React.FC<TaskBarProps> = (props) => {
   return (
     <motion.div
       className={`on-taskbar ${
-        isShowingDesktop ? "on-taskbar-showing-desktop" : ""
+        isShowingTaskBar ? "on-taskbar-showing-desktop" : ""
       }`}
       initial={{
         translateX: "50%",
         translateY: "0%",
       }}
-      // animate={{
-      //   translateY: isShowingDesktop ? "150%" : "0%",
-      // }}
+      animate={{
+        translateY: isShowingTaskBar ? "150%" : "0%",
+      }}
       transition={{
         duration: 0.2,
         ease: "easeIn",
@@ -94,6 +148,39 @@ export const TaskBar: React.FC<TaskBarProps> = (props) => {
         </div>
       </div>
     </motion.div>
+  );
+};
+
+export const NotificationMenu = () => {
+  return (
+    <div className='on-notification-menu'>
+      <div className='flex justify-between'>
+        <div className='close-btn'>
+          <X size={20} />
+        </div>
+        <div className='clear-all'>Clear All</div>
+      </div>
+      {notifications.map((notification, index) => {
+        return (
+          <>
+            <div className='on-notification-menu-item' key={index}>
+              <div>
+                <div className='on-notification-menu-item-title'>
+                  {notification.title}
+                </div>
+                <div className='on-notification-menu-item-body'>
+                  {notification.body}
+                </div>
+              </div>
+              <div className='on-notification-menu-item-date'>
+                {moment(notification.dateNotified).fromNow()}
+              </div>
+            </div>
+            <hr className='menu-divider' />
+          </>
+        );
+      })}
+    </div>
   );
 };
 

@@ -13,7 +13,7 @@
   @apply cursor-pointer flex flex-col items-center text-white text-sm space-y-2;
 
   .on-desktop-app-icon {
-    @apply w-20 h-20 rounded-xl overflow-hidden transform hover:scale-110 transition duration-150;
+    @apply w-20 h-20 rounded-md overflow-hidden transform hover:scale-110 transition duration-150;
 
     img {
       @apply w-full;

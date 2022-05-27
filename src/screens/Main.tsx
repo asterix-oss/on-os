@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { App } from "../components/App";
 import { ContextMenu } from "../components/ContextMenu";
 import { Desktop } from "../components/Desktop";
 import { Layout } from "../components/Layout";
@@ -26,6 +27,13 @@ const Main = () => {
           ease: "easeInOut",
         }}
       />
+
+      <App>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
+        magni amet officia cum molestias sed, ab, doloremque sunt voluptas
+        aspernatur repudiandae! Beatae quasi expedita velit dolorum rem libero
+        omnis facilis.
+      </App>
       <TaskBar />
     </Layout>
   );

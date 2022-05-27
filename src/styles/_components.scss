@@ -1,10 +1,10 @@
 @mixin menu {
-  @include blur(0.77);
-  @apply fixed text-white p-2 flex space-y-2 flex-col min-w-[10rem] text-sm;
+  @apply text-white p-2 flex space-y-2 flex-col min-w-[10rem] text-sm;
+  @include blur(0.8);
 }
 
 @mixin menu_item {
-  @apply flex p-2 hover:bg-red-500/80 rounded-md transition cursor-pointer;
+  @apply flex p-2 hover:bg-dark/20 rounded-md transition cursor-pointer;
 }
 
 @mixin menu_divider {
@@ -16,6 +16,6 @@
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.77);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.089);
 }

@@ -64,7 +64,7 @@ export const ContextMenu: React.FC<ContextMenuProps> = (props) => {
       className='on-context-menu'
       {...props}
     >
-      {menuLists.map((menuList, index) => (
+      {menuLists.map((menuList) => (
         <>
           {menuList.map((item, index) => (
             <div key={index} className='on-context-menu-item'>
