@@ -1,5 +1,5 @@
 import { motion, MotionProps } from "framer-motion";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 import "./ContextMenu.scss";
 
 export interface ContextMenuProps extends MotionProps {}
@@ -64,15 +64,15 @@ export const ContextMenu: React.FC<ContextMenuProps> = (props) => {
       className='on-context-menu'
       {...props}
     >
-      {menuLists.map((menuList) => (
-        <>
+      {menuLists.map((menuList, key) => (
+        <Fragment key={key}>
           {menuList.map((item, index) => (
             <div key={index} className='on-context-menu-item'>
               {item.label}
             </div>
           ))}
           <hr className='on-context-menu-divider' />
-        </>
+        </Fragment>
       ))}
       <div className='on-context-menu-item'>Exit</div>
     </motion.div>

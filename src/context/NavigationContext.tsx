@@ -26,7 +26,8 @@ const NavigationContext: React.FC<NavigationContextProps> = ({ children }) => {
   const [isShowingTaskBar, setIsShowingTaskBar] = React.useState(false);
 
   const toggleTaskBar = (value?: boolean) => {
-    setIsShowingTaskBar(value || !isShowingTaskBar);
+    alert(value);
+    setIsShowingTaskBar(value !== undefined || !isShowingTaskBar);
   };
 
   const toggleDesktop = () => {

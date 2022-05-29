@@ -9,8 +9,8 @@
 }
 
 .on-taskbar-widget {
-  @apply text-white p-2 flex space-x-2;
   @include blur(0.8);
+  @apply text-white p-2 flex space-x-2 rounded-lg;
 }
 
 .on-taskbar-main {
@@ -26,17 +26,17 @@
 }
 
 .on-taskbar-apps {
-  @apply flex flex-1 flex-row space-x-3 px-2 pr-4 border-r border-white/20 w-max;
+  @apply flex flex-1 flex-row space-x-3 px-2 pr-4 border-r border-white/20 overflow-x-hidden;
 }
 
 .on-taskbar-app {
-  @apply w-10 h-10 transform hover:scale-110 transition duration-150 cursor-pointer;
+  @apply w-10 h-10 transform hover:scale-90 transition duration-150 cursor-pointer;
 
   .on-taskbar-app-icon {
     @apply w-full h-full rounded-sm overflow-hidden;
 
     img {
-      @apply w-full h-full;
+      @apply w-full h-full object-cover;
     }
   }
 }

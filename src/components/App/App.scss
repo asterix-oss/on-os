@@ -1,8 +1,8 @@
 @import "../../styles/components";
 
 .on-app {
-  @include blur(0.95);
-  @apply min-w-[50vw] text-white min-h-[60vh] fixed right-1/2 translate-x-1/2 bottom-1/2 translate-y-1/2;
+  @include blur(0.8);
+  @apply min-w-[50vw] flex flex-col overflow-hidden text-white min-h-[60vh] absolute top-0 left-0 rounded-xl;
 }
 
 .on-app-menu {
@@ -18,9 +18,9 @@
 }
 
 .on-app-menu-section {
-  @apply flex items-center space-x-3 px-2 rounded-sm py-1 bg-white bg-opacity-[0.03];
+  @apply flex items-center space-x-0.5 px-2 rounded-sm py-1;
 }
 
 .on-app-name {
-  @apply flex items-center text-sm px-4 rounded-sm py-1 bg-white bg-opacity-[0.03];
+  @apply flex items-center text-sm px-4 rounded-lg py-1 bg-white bg-opacity-[0.03];
 }

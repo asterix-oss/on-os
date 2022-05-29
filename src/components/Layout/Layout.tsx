@@ -19,7 +19,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
     >
       <div {...rest} className='on-layout'>
         <Wallpaper />
-        <div>{children}</div>
+        {children}
       </div>
     </motion.div>
   );

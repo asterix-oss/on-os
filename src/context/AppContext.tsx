@@ -1,4 +1,5 @@
 import React, { createContext } from "react";
+import AppsContextProvider from "./AppsContext";
 import NavigationContext from "./NavigationContext";
 
 interface AppProps {
@@ -31,7 +32,9 @@ const AppContext: React.FC<AppContextProps> = ({ children }) => {
   };
   return (
     <App.Provider value={value}>
-      <NavigationContext>{children}</NavigationContext>
+      <AppsContextProvider>
+        <NavigationContext>{children}</NavigationContext>
+      </AppsContextProvider>
     </App.Provider>
   );
 };

@@ -8,9 +8,10 @@ import {
   SquaresFour,
   X,
 } from "phosphor-react";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Navigation } from "../../context/NavigationContext";
 import { motion, MotionProps } from "framer-motion";
+import { AppsContext } from "../../context/AppsContext";
 
 export interface TaskBarProps extends MotionProps {
   children?: React.ReactNode;
@@ -70,9 +71,19 @@ const notifications = [
 ];
 
 export const TaskBar: React.FC<TaskBarProps> = (props) => {
-  const { toggleDesktop, closeDesktop, isShowingTaskBar } =
-    useContext(Navigation);
+  const { toggleDesktop, isShowingTaskBar } = useContext(Navigation);
+
+  const { openedApps, pinnedApps, resumeApp, openApp } =
+    useContext(AppsContext);
   const [date, setDate] = React.useState(moment());
+
+  const [taskBarApps, setTaskBarApps] = useState(
+    Array.from(new Set(pinnedApps.concat(openedApps)))
+  );
+
+  React.useInsertionEffect(() => {
+    setTaskBarApps(Array.from(new Set(pinnedApps.concat(openedApps))));
+  }, [openedApps]);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -112,17 +123,20 @@ export const TaskBar: React.FC<TaskBarProps> = (props) => {
           </div>
         </div>
         <div className='on-taskbar-apps'>
-          {new Array(10).fill(20).map((_, index) => {
+          {taskBarApps.map((app, index) => {
             return (
               <div
-                className='on-taskbar-app'
+                title={`${app.name} - ${app.description}`}
+                className={`on-taskbar-app ${
+                  openedApps.includes(app) && "border-b border-blue-500 pb-0.5"
+                }`}
                 key={index}
                 onClick={() => {
-                  closeDesktop();
+                  openedApps.includes(app) ? resumeApp(app) : openApp(app);
                 }}
               >
                 <div className='on-taskbar-app-icon'>
-                  <img src='https://via.placeholder.com/50x50' alt='App Icon' />
+                  <img src={app.icon} alt='App Icon' />
                 </div>
               </div>
             );

@@ -1,13 +1,16 @@
+import { AnimatePresence } from "framer-motion";
 import React, { useContext } from "react";
 import { App } from "../components/App";
 import { ContextMenu } from "../components/ContextMenu";
 import { Desktop } from "../components/Desktop";
 import { Layout } from "../components/Layout";
 import { TaskBar } from "../components/TaskBar";
+import { AppsContext } from "../context/AppsContext";
 import { Navigation } from "../context/NavigationContext";
 
 const Main = () => {
   const { isShowingDesktop } = useContext(Navigation);
+  const { openedApps } = useContext(AppsContext);
   return (
     <Layout>
       <ContextMenu />
@@ -27,13 +30,11 @@ const Main = () => {
           ease: "easeInOut",
         }}
       />
-
-      <App>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
-        magni amet officia cum molestias sed, ab, doloremque sunt voluptas
-        aspernatur repudiandae! Beatae quasi expedita velit dolorum rem libero
-        omnis facilis.
-      </App>
+      <AnimatePresence>
+        {openedApps.map((app, index) => {
+          return <App key={index} {...app} />;
+        })}
+      </AnimatePresence>
       <TaskBar />
     </Layout>
   );

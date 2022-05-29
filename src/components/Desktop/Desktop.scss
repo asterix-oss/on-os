@@ -6,7 +6,7 @@
 }
 
 .on-desktop-apps {
-  @apply grid grid-cols-6 grid-rows-4 justify-center items-center;
+  @apply grid grid-cols-7 grid-rows-4 justify-center items-center;
 }
 
 .on-desktop-app {
@@ -16,7 +16,7 @@
     @apply w-20 h-20 rounded-md overflow-hidden transform hover:scale-110 transition duration-150;
 
     img {
-      @apply w-full;
+      @apply w-full h-full object-cover;
     }
   }
 }
