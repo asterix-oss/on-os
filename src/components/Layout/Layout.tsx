@@ -8,7 +8,7 @@ export interface LayoutProps extends React.HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
+const Layout: React.FC<LayoutProps> = ({ children, ...rest }) => {
   return (
     <motion.div
       variants={animationConfiguration}

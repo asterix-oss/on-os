@@ -1,1 +1,3 @@
-export * from "./Desktop";
+import Desktop from "./Desktop";
+
+export default Desktop;

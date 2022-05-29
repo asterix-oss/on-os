@@ -4,10 +4,6 @@
   @apply fixed bottom-0 w-[95vw] text-sm right-1/2 mb-4 text-white flex space-x-2 z-50;
 }
 
-.on-taskbar-showing-desktop {
-  @apply translate-y-[150%] box-border;
-}
-
 .on-taskbar-widget {
   @include blur(0.8);
   @apply text-white p-2 flex space-x-2 rounded-lg;

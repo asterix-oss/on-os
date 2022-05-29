@@ -1,5 +1,5 @@
 .on-desktop {
-  @apply w-screen h-screen fixed top-0 left-0 text-white z-10 flex flex-col space-y-6 items-center pt-6 pb-28;
+  @apply w-screen h-screen fixed top-0 left-0 text-white z-[9999999999999999] flex flex-col space-y-6 items-center pt-6 pb-28;
   background: rgba(9, 9, 9, 0.848);
   backdrop-filter: blur(5.5px);
   -webkit-backdrop-filter: blur(5.5px);

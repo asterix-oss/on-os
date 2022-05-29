@@ -1,1 +1,3 @@
-export * from "./TaskBar";
+import TaskBar from "./TaskBar";
+
+export default TaskBar;

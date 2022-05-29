@@ -8,7 +8,7 @@ import {
   SquaresFour,
   X,
 } from "phosphor-react";
-import React, { useContext, useState } from "react";
+import React, { memo, useContext, useState } from "react";
 import { Navigation } from "../../context/NavigationContext";
 import { motion, MotionProps } from "framer-motion";
 import { AppsContext } from "../../context/AppsContext";
@@ -70,7 +70,7 @@ const notifications = [
   },
 ];
 
-export const TaskBar: React.FC<TaskBarProps> = (props) => {
+const TaskBar: React.FC<TaskBarProps> = (props) => {
   const { toggleDesktop, isShowingTaskBar } = useContext(Navigation);
 
   const { openedApps, pinnedApps, resumeApp, openApp } =
@@ -81,7 +81,7 @@ export const TaskBar: React.FC<TaskBarProps> = (props) => {
     Array.from(new Set(pinnedApps.concat(openedApps)))
   );
 
-  React.useInsertionEffect(() => {
+  React.useEffect(() => {
     setTaskBarApps(Array.from(new Set(pinnedApps.concat(openedApps))));
   }, [openedApps]);
 
@@ -94,15 +94,13 @@ export const TaskBar: React.FC<TaskBarProps> = (props) => {
 
   return (
     <motion.div
-      className={`on-taskbar ${
-        isShowingTaskBar ? "on-taskbar-showing-desktop" : ""
-      }`}
+      className={`on-taskbar`}
       initial={{
         translateX: "50%",
         translateY: "0%",
       }}
       animate={{
-        translateY: isShowingTaskBar ? "150%" : "0%",
+        translateY: isShowingTaskBar ? "0%" : "150",
       }}
       transition={{
         duration: 0.2,
@@ -128,8 +126,11 @@ export const TaskBar: React.FC<TaskBarProps> = (props) => {
               <div
                 title={`${app.name} - ${app.description}`}
                 className={`on-taskbar-app ${
-                  openedApps.includes(app) && "border-b border-blue-500 pb-0.5"
+                  openedApps.includes(app) && "border-b pb-0.5"
                 }`}
+                style={{
+                  borderColor: app.theme?.accentColor || "blue",
+                }}
                 key={index}
                 onClick={() => {
                   openedApps.includes(app) ? resumeApp(app) : openApp(app);
@@ -198,4 +199,4 @@ export const NotificationMenu = () => {
   );
 };
 
-export default TaskBar;
+export default memo(TaskBar);

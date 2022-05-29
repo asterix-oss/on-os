@@ -13,7 +13,7 @@
 
 @mixin blur($opacity) {
   background: rgba(9, 9, 9, $opacity);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.77);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.345);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 5px;

@@ -1,5 +1,5 @@
 import { motion, MotionProps } from "framer-motion";
-import React, { Fragment, useCallback, useEffect, useState } from "react";
+import React, { Fragment, memo, useCallback, useEffect, useState } from "react";
 import "./ContextMenu.scss";
 
 export interface ContextMenuProps extends MotionProps {}
@@ -23,7 +23,7 @@ const menuLists = [
   ],
 ];
 
-export const ContextMenu: React.FC<ContextMenuProps> = (props) => {
+const ContextMenu: React.FC<ContextMenuProps> = (props) => {
   const [anchorPoint, setAnchorPoint] = useState({ x: 0, y: 0 });
   const [show, setShow] = useState(false);
   const handleContextMenu = useCallback(
@@ -79,4 +79,4 @@ export const ContextMenu: React.FC<ContextMenuProps> = (props) => {
   );
 };
 
-export default ContextMenu;
+export default memo(ContextMenu);

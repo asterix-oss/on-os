@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { memo, useContext } from "react";
 import "./Desktop.scss";
 import { Swiper as SwiperContainer, SwiperSlide } from "swiper/react";
 import { motion, MotionProps } from "framer-motion";
@@ -11,7 +11,7 @@ export interface DesktopProps extends MotionProps {
   children?: React.ReactNode;
 }
 
-export const Desktop: React.FC<DesktopProps> = ({ children, ...rest }) => {
+const Desktop: React.FC<DesktopProps> = ({ children, ...rest }) => {
   const [swiper, setSwiper] = React.useState<Swiper | null>(null);
   const [active, setActive] = React.useState(0);
   const { apps, openApp, resumeApp, openedApps } = useContext(AppsContext);
@@ -76,4 +76,4 @@ export const Desktop: React.FC<DesktopProps> = ({ children, ...rest }) => {
   );
 };
 
-export default Desktop;
+export default memo(Desktop);

@@ -23,25 +23,27 @@ interface NavigationContextProps {
 const NavigationContext: React.FC<NavigationContextProps> = ({ children }) => {
   const [isShowingDesktop, setIsShowingDesktop] = React.useState(false);
 
-  const [isShowingTaskBar, setIsShowingTaskBar] = React.useState(false);
+  const [isShowingTaskBar, setIsShowingTaskBar] = React.useState(true);
 
-  const toggleTaskBar = (value?: boolean) => {
-    alert(value);
-    setIsShowingTaskBar(value !== undefined || !isShowingTaskBar);
-  };
+  const toggleTaskBar = React.useCallback(
+    (value?: boolean) => {
+      setIsShowingTaskBar(value !== undefined || !isShowingTaskBar);
+    },
+    [isShowingTaskBar]
+  );
 
-  const toggleDesktop = () => {
+  const toggleDesktop = React.useCallback(() => {
     setIsShowingDesktop(!isShowingDesktop);
     // if (isShowingDesktop) {
     //   setIsShowingTaskBar(false);
     // } else {
     //   setIsShowingTaskBar(true);
     // }
-  };
+  }, [isShowingDesktop]);
 
-  const closeDesktop = () => {
+  const closeDesktop = React.useCallback(() => {
     setIsShowingDesktop(false);
-  };
+  }, []);
 
   const value = {
     isShowingDesktop,

@@ -1,7 +1,16 @@
 import React, { createContext } from "react";
 import { Hello } from "../apps/Hello";
 import { Lorem } from "../apps/Lorem";
-import { AppProps } from "../components/App";
+import { Settings } from "../apps/Settings";
+import { Space } from "../apps/Space";
+import { AppProps } from "../components/App/App";
+
+export type Theme = {
+  theme?: "dark" | "light" | "default";
+  backgroundColor?: string;
+  foregroundColor?: string;
+  accentColor?: string;
+};
 
 export type App = {
   name: string;
@@ -9,6 +18,7 @@ export type App = {
   module: React.FC<AppProps>;
   isFullScreen: boolean;
   description: string;
+  theme?: Theme;
 };
 
 interface AppsContextProps {
@@ -16,22 +26,22 @@ interface AppsContextProps {
   currentApp: App | null;
   openApp: (app: App) => void;
   closeApp: (app: App) => void;
-  resumeApp: (app: App) => void;
+  resumeApp: (app: App | null) => void;
   openedApps: App[];
   pinnedApps: App[];
   pinApp: (app: App) => void;
   unpinApp: (app: App) => void;
 }
 
-export const apps: App[] = [Hello, Lorem];
+export const defaultApps: App[] = [Hello, Lorem, Settings, Space];
 export const defaultPinnedApps: App[] = [Hello];
 
 export const AppsContext = createContext<AppsContextProps>({
-  apps,
+  apps: defaultApps,
   currentApp: null,
   openApp: (app: App) => {},
   closeApp: (app: App) => {},
-  resumeApp: (app: App) => {},
+  resumeApp: (app: App | null) => {},
   openedApps: [],
   pinnedApps: [],
   pinApp: (app: App) => {},
@@ -45,33 +55,46 @@ interface AppsContextProviderProps {
 const AppsContextProvider: React.FC<AppsContextProviderProps> = ({
   children,
 }) => {
+  const [apps] = React.useState<App[]>([...defaultApps]);
   const [openedApps, setOpenedApps] = React.useState<App[]>([]);
   const [pinnedApps, setPinnedApps] = React.useState<App[]>(defaultPinnedApps);
   const [currentApp, setCurrentApp] = React.useState<App | null>(null);
 
-  const openApp = (app: App) => {
-    setOpenedApps([...openedApps, app]);
-  };
+  const openApp = React.useCallback(
+    (app: App) => {
+      setOpenedApps([...openedApps, app]);
+    },
+    [openedApps]
+  );
 
-  const closeApp = (app: App) => {
-    setOpenedApps(
-      openedApps.filter((openedApp) => openedApp.name !== app.name)
-    );
-  };
+  const closeApp = React.useCallback(
+    (app: App) => {
+      setOpenedApps(
+        openedApps.filter((openedApp) => openedApp.name !== app.name)
+      );
+    },
+    [openedApps]
+  );
 
-  const pinApp = (app: App) => {
-    setPinnedApps([...pinnedApps, app]);
-  };
+  const pinApp = React.useCallback(
+    (app: App) => {
+      setPinnedApps([...pinnedApps, app]);
+    },
+    [pinnedApps]
+  );
 
-  const unpinApp = (app: App) => {
-    setPinnedApps(
-      pinnedApps.filter((application) => application.name !== app.name)
-    );
-  };
+  const unpinApp = React.useCallback(
+    (app: App) => {
+      setPinnedApps(
+        pinnedApps.filter((application) => application.name !== app.name)
+      );
+    },
+    [pinnedApps]
+  );
 
-  const resumeApp = (app: App) => {
+  const resumeApp = React.useCallback((app: App | null) => {
     setCurrentApp(app);
-  };
+  }, []);
 
   const value = {
     apps,
