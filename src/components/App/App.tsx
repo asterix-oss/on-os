@@ -7,7 +7,7 @@ import "./App.scss";
 
 export interface AppProps extends AppType {
   motionProps?: MotionProps;
-  key?: number;
+  index?: number;
 }
 
 const App: React.FC<AppProps> = (props) => {
@@ -24,29 +24,29 @@ const App: React.FC<AppProps> = (props) => {
     }
   }, [currentApp, name]);
 
-  const close = () => {
+  const close = React.useCallback(() => {
     closeApp(props);
     if (isFullScreen) {
       toggleTaskBar();
     }
-  };
+  }, [isFullScreen, props, closeApp, toggleTaskBar]);
 
-  const toggleFullscreen = () => {
+  const toggleFullscreen = React.useCallback(() => {
     setIsFullScreen(!isFullScreen);
     toggleTaskBar(isFullScreen ? true : false);
-  };
+  }, [isFullScreen, toggleTaskBar]);
 
-  const minimize: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    e.stopPropagation();
-    setMinimized(true);
-    resumeApp(null);
-  };
+  const minimize: React.MouseEventHandler<HTMLDivElement> = React.useCallback(
+    (e) => {
+      e.stopPropagation();
+      setMinimized(true);
+      resumeApp(null);
+    },
+    [resumeApp]
+  );
 
   return (
     <motion.div
-      // onPan={(e, pointEvt) => {
-      //   setCords({ x: pointEvt.point.x, y: pointEvt.point.y });
-      // }}
       className='on-app'
       onClick={() => {
         resumeApp(props);
@@ -60,7 +60,6 @@ const App: React.FC<AppProps> = (props) => {
         {
           width: isFullScreen ? "100%" : "50vw",
           height: isFullScreen ? "100%" : "60vh",
-          background: props.theme?.backgroundColor || "",
           x: isFullScreen ? 0 : "50%",
           y: isFullScreen ? 0 : "25%",
         },
@@ -80,8 +79,8 @@ const App: React.FC<AppProps> = (props) => {
       style={{
         width: isFullScreen ? "100%" : "50vw",
         height: isFullScreen ? "100%" : "60vh",
-
-        zIndex: currentApp?.name === props.name ? 30 : props.key,
+        background: props.theme?.backgroundColor || "",
+        zIndex: currentApp?.name === props.name ? 30 : props.index,
       }}
       // style={{
       //   top: cords.y,

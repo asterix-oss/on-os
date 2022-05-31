@@ -29,7 +29,7 @@
   @apply w-10 h-10 transform hover:scale-90 transition duration-150 cursor-pointer;
 
   .on-taskbar-app-icon {
-    @apply w-full h-full rounded-sm overflow-hidden;
+    @apply w-full h-full overflow-hidden;
 
     img {
       @apply w-full h-full object-cover;

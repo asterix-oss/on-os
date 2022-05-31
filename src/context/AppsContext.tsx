@@ -1,9 +1,14 @@
 import React, { createContext } from "react";
-import { Hello } from "../apps/Hello";
-import { Lorem } from "../apps/Lorem";
+import { Notes } from "../apps/Notes";
+import { Explorer } from "../apps/Explorer";
 import { Settings } from "../apps/Settings";
 import { Space } from "../apps/Space";
 import { AppProps } from "../components/App/App";
+import { Calendar } from "../apps/Calendar";
+import { Gallery } from "../apps/Gallery";
+import { Music } from "../apps/Music";
+import { Videos } from "../apps/Videos";
+import { Calculator } from "../apps/Calculator";
 
 export type Theme = {
   theme?: "dark" | "light" | "default";
@@ -33,8 +38,18 @@ interface AppsContextProps {
   unpinApp: (app: App) => void;
 }
 
-export const defaultApps: App[] = [Hello, Lorem, Settings, Space];
-export const defaultPinnedApps: App[] = [Hello];
+export const defaultApps: App[] = [
+  Explorer,
+  Space,
+  Notes,
+  Calendar,
+  Calculator,
+  Gallery,
+  Music,
+  Videos,
+  Settings,
+];
+export const defaultPinnedApps: App[] = [Explorer, Space];
 
 export const AppsContext = createContext<AppsContextProps>({
   apps: defaultApps,

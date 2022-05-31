@@ -83,7 +83,7 @@ const TaskBar: React.FC<TaskBarProps> = (props) => {
 
   React.useEffect(() => {
     setTaskBarApps(Array.from(new Set(pinnedApps.concat(openedApps))));
-  }, [openedApps]);
+  }, [openedApps, pinnedApps]);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -126,10 +126,10 @@ const TaskBar: React.FC<TaskBarProps> = (props) => {
               <div
                 title={`${app.name} - ${app.description}`}
                 className={`on-taskbar-app ${
-                  openedApps.includes(app) && "border-b pb-0.5"
+                  openedApps.includes(app) && "border-b pb-0.5 scale-90"
                 }`}
                 style={{
-                  borderColor: app.theme?.accentColor || "blue",
+                  borderColor: app.theme?.accentColor || "white",
                 }}
                 key={index}
                 onClick={() => {

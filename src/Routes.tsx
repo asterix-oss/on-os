@@ -1,8 +1,8 @@
-import React from "react";
+import React, { lazy } from "react";
 import { Route, Routes as DOMRoutes, Location } from "react-router-dom";
-import Loading from "./screens/Loading";
-import Main from "./screens/Main";
-import Welcome from "./screens/Welcome";
+const Loading = lazy(() => import("./screens/Loading"));
+const Main = lazy(() => import("./screens/Main"));
+const Welcome = lazy(() => import("./screens/Welcome"));
 
 const Routes: React.FC<{
   location: Location;

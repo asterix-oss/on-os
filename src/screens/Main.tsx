@@ -33,7 +33,7 @@ const Main = () => {
         />
         <AnimatePresence>
           {openedApps.map((app, index) => {
-            return <App key={index} {...app} />;
+            return <App key={index} {...app} index={index} />;
           })}
         </AnimatePresence>
         <TaskBar />
