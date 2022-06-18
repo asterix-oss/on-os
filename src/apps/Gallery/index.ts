@@ -4,7 +4,7 @@ import Home from "./Home";
 export const Gallery: App = {
   name: "Gallery",
   icon: require("./assets/logo.png"),
-  description: "Used to display images",
+  description: "View images",
   module: Home,
   isFullScreen: false,
 };
