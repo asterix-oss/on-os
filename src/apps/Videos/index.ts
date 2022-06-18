@@ -4,7 +4,7 @@ import Home from "./Home";
 export const Videos: App = {
   name: "Videos",
   icon: require("./assets/logo.png"),
-  description: "A simple demo app",
+  description: "Used to play videos",
   module: Home,
   isFullScreen: false,
 };

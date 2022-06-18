@@ -4,7 +4,7 @@ import Home from "./Home";
 export const Calendar: App = {
   name: "Calendar",
   icon: require("./assets/logo.png"),
-  description: "A simple demo app",
+  description: "Used to keep track of events",
   module: Home,
   isFullScreen: false,
 };

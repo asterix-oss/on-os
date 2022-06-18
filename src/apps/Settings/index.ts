@@ -4,7 +4,7 @@ import Home from "./Home";
 export const Settings: App = {
   name: "Settings",
   icon: require("./assets/logo.png"),
-  description: "User Preferences",
+  description: "Used to change user preferences",
   module: Home,
   isFullScreen: false,
 };
