@@ -4,7 +4,7 @@ import Home from "./Home";
 export const Notes: App = {
   name: "Notes",
   icon: require("./assets/logo.png"),
-  description: "A simple demo app",
+  description: "Keep Track of Notes",
   module: Home,
   isFullScreen: false,
 };
