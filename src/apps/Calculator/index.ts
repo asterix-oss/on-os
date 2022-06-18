@@ -4,7 +4,7 @@ import Home from "./Home";
 export const Calculator: App = {
   name: "Calculator",
   icon: require("./assets/logo.png"),
-  description: "Do math operations",
+  description: "Do Math Operations",
   module: Home,
   isFullScreen: false,
 };

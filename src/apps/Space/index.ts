@@ -4,7 +4,7 @@ import Home from "./Home";
 export const Space: App = {
   name: "Space",
   icon: require("./assets/logo.png"),
-  description: "Access information on the internet",
+  description: "Explore the Infinite Web",
   module: Home,
   isFullScreen: false,
   theme: {
